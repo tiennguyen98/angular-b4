@@ -1,12 +1,26 @@
-<input type="number" [(ngModel)]="number1"/>
-<select (change)="getValue($event)">
-  <option></option>
-  <option value="+">+</option>
-  <option value="-">-</option>
-  <option value="*">*</option>
-  <option value="/">/</option>
-</select>
-<input type="number" [(ngModel)]="number2"><br>
-<button (click)="calculator()">Thực thi</button><br>
-<span>{{this.result}}</span>
+<h2>Color Picker</h2>
+<div>
+  <label>Chọn màu:</label>
+  <input type="color" [(ngModel)]="backgroundChoose"> <button (click)="onChange()">Choose</button>
+</div>
+<p>Color choose: </p>
+<div *ngFor="let background of listBackgroundChoose" style="width:100px;height:100px;border-radius:50%; margin: 10px" [style]="{'background':background}"></div>
+<p>Output:</p>
+<br>
+<div *ngIf="listBackgroundChoose.length > 0">
+  <!--  <input [value]="backgroundShow" type="color"/>-->
 
+  <div style="width:100px;height:100px;border-radius:50%" [style]="{'background':backgroundShow}"></div>
+  <h2>Countdown Timer</h2>
+
+  <div class="group-actions">
+    <button (click)="start()" [disabled]="isStart">Start</button>
+    <button (click)="reset()" [disabled]="!isStart">Reset</button>
+  </div>
+  <div class="timer">
+    <span class="timer-text">{{remainingTime}}</span>
+  </div>
+</div>
+<div *ngIf="listBackgroundChoose.length === 0" style="color: red">
+  Chưa chọn màu
+</div>
